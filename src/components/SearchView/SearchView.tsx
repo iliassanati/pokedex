@@ -1,10 +1,10 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { SearchParams } from '../../utils/models'
-import Input from '../Input'
+import { SearchParams } from '../../utils/models';
+import Input from '../Input';
 
 interface SearchViewProps {
-  onChangeFilter: (value: SearchParams) => void
+  onChangeFilter: (value: SearchParams) => void;
 }
 
 const SearchView: React.FC<SearchViewProps> = ({ onChangeFilter }) => {
@@ -12,50 +12,51 @@ const SearchView: React.FC<SearchViewProps> = ({ onChangeFilter }) => {
     id: '',
     name: '',
     type: '',
-    ability: ''
-  })
+    ability: '',
+  });
 
   const handleChange = (item: string, value: string) => {
     const newFilter = {
       ...filter,
-      [item]: value.toLowerCase()
-    }
-    setFilter(newFilter)
-    onChangeFilter(newFilter)
-  }
+      [item]: value.toLowerCase(),
+    };
+    setFilter(newFilter);
+    onChangeFilter(newFilter);
+  };
 
   return (
-    <div className="message is-info">
-      <div className="message-header">Search</div>
-      <div className="message-body message-body-wrapper">
+    <div className='message is-info'>
+      <div className='message-header'>Search</div>
+      <div className='message-body message-body-wrapper'>
         <Input
-          label="# of Pokemon"
+          label='# of Pokemon'
           value={filter.id}
           onChange={(e) => handleChange('id', e.target.value)}
+          data-test='id-pokemon'
         />
         <Input
-          label="Name"
+          label='Name'
           value={filter.name}
           onChange={(e) => handleChange('name', e.target.value)}
         />
         <Input
-          label="Type"
+          label='Type'
           value={filter.type}
           onChange={(e) => handleChange('type', e.target.value)}
         />
         <Input
-          label="Ability"
+          label='Ability'
           value={filter.ability}
           onChange={(e) => handleChange('ability', e.target.value)}
         />
         <img
-          className="mt-4"
-          src="https://upload.wikimedia.org/wikipedia/en/0/09/AshXYanime.png"
-          alt="Ash"
+          className='mt-4'
+          src='https://upload.wikimedia.org/wikipedia/en/0/09/AshXYanime.png'
+          alt='Ash'
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchView
+export default SearchView;
